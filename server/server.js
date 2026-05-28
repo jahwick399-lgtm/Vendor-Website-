@@ -14,6 +14,7 @@ const PRICE_IDS = {
   shoes:       process.env.STRIPE_PRICE_SHOES,
   jewelry:     process.env.STRIPE_PRICE_JEWELRY,
   hoodies:     process.env.STRIPE_PRICE_HOODIES,
+  clothing:    process.env.STRIPE_PRICE_CLOTHING,
   fragrance:   process.env.STRIPE_PRICE_FRAGRANCE,
   watches:     process.env.STRIPE_PRICE_WATCHES,
   bundle:      process.env.STRIPE_PRICE_BUNDLE,
@@ -311,6 +312,66 @@ const VENDOR_CONTENT = {
     ],
   },
 
+  clothing: {
+    title: '👕 Clothing Vendor',
+    intro: 'Complete streetwear supplier access. Everything in the Hoodie package plus more — all top brands at supplier pricing.',
+    sections: [
+      {
+        name: '🕷 Sp5der',
+        items: [
+          { name: 'Sp5der Hoodie/Joggers', price: '$42', url: 'https://usfans.com/product/3/7722032010?ref=KRYFUS' },
+          { name: 'Sp5der Hoodie/Joggers', price: '$42', url: 'https://usfans.com/product/3/7722036950?ref=KRYFUS' },
+          { name: 'Sp5der Hoodie/Joggers', price: '$42', url: 'https://usfans.com/product/3/7722011630?ref=KRYFUS' },
+          { name: 'Sp5der Hoodie/Joggers', price: '$42', url: 'https://usfans.com/product/3/7722011614?ref=KRYFUS' },
+        ],
+      },
+      {
+        name: '🖤 Chrome Hearts & Hellstar',
+        items: [
+          { name: 'Chrome Hearts Hoodie', price: '$45', url: 'https://usfans.com/product/3/7719099133?ref=KRYFUS' },
+          { name: 'Hellstar Hoodie',      price: '$25', url: 'https://usfans.com/product/3/7722043738?ref=KRYFUS' },
+        ],
+      },
+      {
+        name: '🦇 Bape',
+        items: [
+          { name: 'Bape Hoodie', price: '$45', url: 'https://usfans.com/product/3/7719100785?ref=KRYFUS' },
+        ],
+      },
+      {
+        name: '🟤 Essentials',
+        items: [
+          { name: 'Essentials Hoodie', price: '$30', url: 'https://usfans.com/product/3/7722029390?ref=KRYFUS' },
+          { name: 'Essentials Hoodie', price: '$30', url: 'https://usfans.com/product/3/7722001566?ref=KRYFUS' },
+          { name: 'Essentials Hoodie', price: '$30', url: 'https://usfans.com/product/3/7722043734?ref=KRYFUS' },
+        ],
+      },
+      {
+        name: '👖 Denim Tears',
+        items: [
+          { name: 'Denim Tears Hoodie', price: '$50', url: 'https://usfans.com/product/3/7722013690?ref=KRYFUS' },
+          { name: 'Denim Tears Hoodie', price: '$50', url: 'https://usfans.com/product/3/7722013692?ref=KRYFUS' },
+          { name: 'Denim Tears Hoodie', price: '$50', url: 'https://usfans.com/product/3/7722013694?ref=KRYFUS' },
+        ],
+      },
+      {
+        name: '🏔 North Face',
+        items: [
+          { name: 'North Face Puffer', price: '$52', url: 'https://usfans.com/product/3/7722009206?ref=KRYFUS' },
+          { name: 'North Face Puffer', price: '$52', url: 'https://usfans.com/product/3/7722009208?ref=KRYFUS' },
+          { name: 'North Face Puffer', price: '$52', url: 'https://usfans.com/product/3/7722009210?ref=KRYFUS' },
+        ],
+      },
+      {
+        name: '🦅 Moncler & Trapstar',
+        items: [
+          { name: 'Moncler Puffer', price: '$50', url: 'https://usfans.com/product/3/7722009212?ref=KRYFUS' },
+          { name: 'Trapstar',       price: '$40', url: 'https://usfans.com/product/3/7722043736?ref=KRYFUS' },
+        ],
+      },
+    ],
+  },
+
   // Bundle returns all vendor content combined
   bundle: null,
 }
@@ -318,7 +379,7 @@ const VENDOR_CONTENT = {
 // Build bundle content from all vendors
 VENDOR_CONTENT.bundle = {
   title: '🔥 All Access Bundle',
-  intro: 'You have access to every vendor. All 6 categories below.',
+  intro: 'You have access to every vendor. All 7 categories below.',
   sections: Object.entries(VENDOR_CONTENT)
     .filter(([key, val]) => key !== 'bundle' && val)
     .flatMap(([, vendor]) =>

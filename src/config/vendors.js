@@ -1,5 +1,4 @@
 // Vendor category definitions
-// priceId: set these in your Stripe dashboard, then add to Render env vars
 export const VENDORS = [
   {
     id: 'electronics',
@@ -11,9 +10,9 @@ export const VENDORS = [
     desc: 'iPhones, Samsung, AirPods, headphones, smart watches, speakers & more. Direct supplier access.',
     items: ['iPhones from $10', 'Samsung Galaxy S24/S25', 'AirPods & headphones', 'Smart watches', 'JBL speakers', 'Dyson & accessories'],
     originalPrice: '$49.99',
-    price: '$7.99',
+    price: '$14.99',
     gradient: 'from-purple-900/40 via-purple-800/20 to-black',
-    glowColor: 'rgba(147,51,234,0.4)',
+    glowColor: 'rgba(147,51,234,0.5)',
     priceEnvKey: 'VITE_PRICE_ELECTRONICS',
   },
   {
@@ -24,11 +23,11 @@ export const VENDORS = [
     tag: 'POPULAR',
     tagColor: 'from-blue-600 to-purple-600',
     desc: 'Jordans, Nike, designer sneakers and more. Source heat at supplier prices.',
-    items: ['Air Jordans', 'Nike Dunks', 'Designer sneakers', 'Yeezys', 'New Balance', 'Limited drops'],
+    items: ['Air Jordans', 'Nike Dunks', 'Designer sneakers', 'Yeezys', 'Balenciaga', 'Limited drops'],
     originalPrice: '$29.99',
-    price: '$7.99',
+    price: '$6.99',
     gradient: 'from-blue-900/30 via-purple-900/20 to-black',
-    glowColor: 'rgba(59,130,246,0.3)',
+    glowColor: 'rgba(59,130,246,0.4)',
     priceEnvKey: 'VITE_PRICE_SHOES',
   },
   {
@@ -41,9 +40,9 @@ export const VENDORS = [
     desc: 'Iced out chains, rings, bracelets, and pendants. High-margin products that flip fast.',
     items: ['Iced out chains', 'Diamond rings', 'Tennis bracelets', 'Pendants', 'Cuban links', 'Custom pieces'],
     originalPrice: '$29.99',
-    price: '$7.99',
+    price: '$9.99',
     gradient: 'from-yellow-900/20 via-purple-900/20 to-black',
-    glowColor: 'rgba(234,179,8,0.2)',
+    glowColor: 'rgba(234,179,8,0.3)',
     priceEnvKey: 'VITE_PRICE_JEWELRY',
   },
   {
@@ -54,12 +53,27 @@ export const VENDORS = [
     tag: 'TOP SELLER',
     tagColor: 'from-pink-600 to-purple-600',
     desc: 'Spider, Essential, designer hoodies at supplier cost. Best-selling resell category.',
-    items: ['Spider hoodies', 'Essentials', 'Gallery Dept', 'Corteiz', 'Stussy', 'Designer brands'],
+    items: ['Spider hoodies', 'Essentials', 'North Face', 'Moncler', 'Bape', 'Trapstar'],
     originalPrice: '$19.99',
     price: '$7.99',
     gradient: 'from-pink-900/30 via-purple-900/20 to-black',
-    glowColor: 'rgba(236,72,153,0.3)',
+    glowColor: 'rgba(236,72,153,0.4)',
     priceEnvKey: 'VITE_PRICE_HOODIES',
+  },
+  {
+    id: 'clothing',
+    name: 'Clothing Vendor',
+    emoji: '👕',
+    category: 'Clothing',
+    tag: 'FULL ACCESS',
+    tagColor: 'from-green-500 to-teal-600',
+    desc: 'Everything from the Hoodie package plus additional streetwear. The complete clothing supplier.',
+    items: ['All hoodie brands', 'Spider & Essentials', 'North Face & Moncler', 'Chrome Hearts', 'Denim Tears', 'Full streetwear access'],
+    originalPrice: '$34.99',
+    price: '$12.99',
+    gradient: 'from-emerald-900/20 via-purple-900/20 to-black',
+    glowColor: 'rgba(16,185,129,0.3)',
+    priceEnvKey: 'VITE_PRICE_CLOTHING',
   },
   {
     id: 'fragrance',
@@ -69,11 +83,11 @@ export const VENDORS = [
     tag: 'FAST FLIP',
     tagColor: 'from-rose-500 to-pink-600',
     desc: 'Designer colognes and perfumes at unbeatable supplier prices. Easy sell every time.',
-    items: ['Dior Sauvage', 'Creed Aventus', 'YSL Black Opium', 'Tom Ford', 'Chanel', 'Versace'],
+    items: ['Dior Sauvage', 'Creed Aventus', 'Tom Ford', 'Bleu de Chanel', 'Valentino', 'Versace & Gucci'],
     originalPrice: '$19.99',
-    price: '$7.99',
+    price: '$6.99',
     gradient: 'from-rose-900/20 via-purple-900/20 to-black',
-    glowColor: 'rgba(244,63,94,0.2)',
+    glowColor: 'rgba(244,63,94,0.3)',
     priceEnvKey: 'VITE_PRICE_FRAGRANCE',
   },
   {
@@ -83,12 +97,12 @@ export const VENDORS = [
     category: 'Watches',
     tag: 'NEW',
     tagColor: 'from-cyan-500 to-blue-600',
-    desc: 'Smart watches, luxury timepieces, and designer watches at supplier pricing.',
-    items: ['Smart watches', 'AP-style pieces', 'Richard Mille style', 'Rolex style', 'Casio G-Shock', 'Fossil'],
+    desc: 'Casio, Rolex, Omega, and luxury timepieces at direct supplier pricing.',
+    items: ['Casio G-Shock', 'Tissot PRX', 'Rolex style', 'Omega Seamaster', 'Audemars Piguet', 'Patek Philippe'],
     originalPrice: '$19.99',
-    price: '$7.99',
+    price: '$9.99',
     gradient: 'from-cyan-900/20 via-purple-900/20 to-black',
-    glowColor: 'rgba(6,182,212,0.2)',
+    glowColor: 'rgba(6,182,212,0.3)',
     priceEnvKey: 'VITE_PRICE_WATCHES',
   },
   {
@@ -98,22 +112,22 @@ export const VENDORS = [
     category: 'Bundle',
     tag: 'BEST VALUE',
     tagColor: 'from-purple-500 to-pink-500',
-    desc: 'Every single vendor in one package. Electronics, shoes, jewelry, hoodies, fragrance & watches.',
-    items: ['All 6 vendor categories', 'Electronics suppliers', 'Shoes & hoodies', 'Jewelry & watches', 'Fragrance access', 'Lifetime updates'],
-    originalPrice: '$47.94',
+    desc: 'Every single vendor in one package. Electronics, shoes, jewelry, hoodies, clothing, fragrance & watches.',
+    items: ['All 7 vendor categories', 'Electronics suppliers', 'Shoes & clothing', 'Jewelry & watches', 'Fragrance access', 'Lifetime updates'],
+    originalPrice: '$69.93',
     price: '$24.99',
     gradient: 'from-purple-900/50 via-pink-900/20 to-black',
-    glowColor: 'rgba(147,51,234,0.5)',
+    glowColor: 'rgba(147,51,234,0.6)',
     priceEnvKey: 'VITE_PRICE_BUNDLE',
     featured: true,
   },
 ]
 
-// Toast notification data — these cycle through to show social proof
+// Toast notification data
 export const TOAST_PRODUCTS = [
   'Electronics Vendor', 'Shoes Vendor', 'Jewelry Vendor', 'Hoodie Vendor',
   'Fragrance Vendor', 'Watches Vendor', 'All Access Bundle',
-  'Electronics Vendor', 'All Access Bundle', 'Shoes Vendor',
+  'Clothing Vendor', 'Electronics Vendor', 'All Access Bundle',
 ]
 
 export const TOAST_NAMES = [
@@ -122,7 +136,6 @@ export const TOAST_NAMES = [
   'Zoe C.', 'Maya L.', 'Andre P.', 'DeShawn H.', 'Chris V.',
 ]
 
-// Ticker bar messages
 export const TICKER_MESSAGES = [
   '🔥 Jordan just copped the Electronics Vendor — 2 mins ago',
   '💰 Marcus made $800 his first week with the Shoes Vendor',
