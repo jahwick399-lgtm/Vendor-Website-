@@ -92,30 +92,15 @@ export const VENDORS = [
     priceEnvKey: 'VITE_PRICE_WATCHES',
   },
   {
-    id: 'clothing',
-    name: 'Clothing Vendor',
-    emoji: '👕',
-    category: 'Clothing',
-    tag: 'CONSISTENT',
-    tagColor: 'from-green-500 to-teal-600',
-    desc: 'T-shirts, joggers, tracksuits, and streetwear staples. Consistent sellers year-round.',
-    items: ['Designer tees', 'Tracksuits', 'Joggers', 'Polo shirts', 'Cargo pants', 'Streetwear sets'],
-    originalPrice: '$19.99',
-    price: '$7.99',
-    gradient: 'from-green-900/20 via-purple-900/20 to-black',
-    glowColor: 'rgba(34,197,94,0.2)',
-    priceEnvKey: 'VITE_PRICE_CLOTHING',
-  },
-  {
     id: 'bundle',
     name: 'All Access Bundle',
     emoji: '🔥',
     category: 'Bundle',
     tag: 'BEST VALUE',
     tagColor: 'from-purple-500 to-pink-500',
-    desc: 'Every single vendor in one package. Electronics, shoes, jewelry, hoodies, fragrance, watches & clothing.',
-    items: ['All 7 vendor categories', 'Electronics suppliers', 'Shoes & clothing', 'Jewelry & watches', 'Fragrance access', 'Lifetime updates'],
-    originalPrice: '$55.93',
+    desc: 'Every single vendor in one package. Electronics, shoes, jewelry, hoodies, fragrance & watches.',
+    items: ['All 6 vendor categories', 'Electronics suppliers', 'Shoes & hoodies', 'Jewelry & watches', 'Fragrance access', 'Lifetime updates'],
+    originalPrice: '$47.94',
     price: '$24.99',
     gradient: 'from-purple-900/50 via-pink-900/20 to-black',
     glowColor: 'rgba(147,51,234,0.5)',
@@ -127,8 +112,8 @@ export const VENDORS = [
 // Toast notification data — these cycle through to show social proof
 export const TOAST_PRODUCTS = [
   'Electronics Vendor', 'Shoes Vendor', 'Jewelry Vendor', 'Hoodie Vendor',
-  'Fragrance Vendor', 'Watches Vendor', 'All Access Bundle', 'Clothing Vendor',
-  'Electronics Vendor', 'All Access Bundle',
+  'Fragrance Vendor', 'Watches Vendor', 'All Access Bundle',
+  'Electronics Vendor', 'All Access Bundle', 'Shoes Vendor',
 ]
 
 export const TOAST_NAMES = [

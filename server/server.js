@@ -16,13 +16,11 @@ const PRICE_IDS = {
   hoodies:     process.env.STRIPE_PRICE_HOODIES,
   fragrance:   process.env.STRIPE_PRICE_FRAGRANCE,
   watches:     process.env.STRIPE_PRICE_WATCHES,
-  clothing:    process.env.STRIPE_PRICE_CLOTHING,
   bundle:      process.env.STRIPE_PRICE_BUNDLE,
 }
 
 // ─── Vendor Content ─────────────────────────────────────────────────────────────
-// This is what buyers see AFTER payment. Only returned after Stripe session verified.
-// To add more links: paste the URL in the `url` field for each item.
+// Returned only after Stripe payment is verified as paid.
 const VENDOR_CONTENT = {
 
   electronics: {
@@ -42,13 +40,13 @@ const VENDOR_CONTENT = {
       {
         name: '🎧 Earbuds & Headphones',
         items: [
-          { name: 'AirPods',               price: '$41',  url: 'https://usfans.com/product/3/7722078124?ref=KRYFUS' },
-          { name: 'AirPods (alt)',          price: '$215', url: 'https://usfans.com/product/3/7722115612?ref=KRYFUS' },
-          { name: 'Wired Earphones',        price: '$7',   url: 'https://usfans.com/product/3/7719121715?ref=KRYFUS' },
-          { name: 'Max Earphones',          price: '$72',  url: 'https://usfans.com/product/3/7719064363?ref=KRYFUS' },
-          { name: 'Bose Ultra Open Earbuds',price: '$22',  url: 'https://usfans.com/product/3/7722046570?ref=KRYFUS' },
-          { name: 'Samsung Buds 3 Pro',     price: '$20',  url: 'https://usfans.com/product/3/7722099768?ref=KRYFUS' },
-          { name: 'Samsung Buds 2 Pro',     price: '$26',  url: 'https://usfans.com/product/3/7721997398?ref=KRYFUS' },
+          { name: 'AirPods',                price: '$41',  url: 'https://usfans.com/product/3/7722078124?ref=KRYFUS' },
+          { name: 'AirPods (alt)',           price: '$215', url: 'https://usfans.com/product/3/7722115612?ref=KRYFUS' },
+          { name: 'Wired Earphones',         price: '$7',   url: 'https://usfans.com/product/3/7719121715?ref=KRYFUS' },
+          { name: 'Max Earphones',           price: '$72',  url: 'https://usfans.com/product/3/7719064363?ref=KRYFUS' },
+          { name: 'Bose Ultra Open Earbuds', price: '$22',  url: 'https://usfans.com/product/3/7722046570?ref=KRYFUS' },
+          { name: 'Samsung Buds 3 Pro',      price: '$20',  url: 'https://usfans.com/product/3/7722099768?ref=KRYFUS' },
+          { name: 'Samsung Buds 2 Pro',      price: '$26',  url: 'https://usfans.com/product/3/7721997398?ref=KRYFUS' },
         ],
       },
       {
@@ -64,14 +62,14 @@ const VENDOR_CONTENT = {
       {
         name: '💈 Dyson & Grooming',
         items: [
-          { name: 'Dyson HD 16',               price: '$120', url: 'https://usfans.com/product/3/7721989378?ref=KRYFUS' },
-          { name: 'Dyson HD 15',               price: '$118', url: 'https://usfans.com/product/3/7722044614?ref=KRYFUS' },
-          { name: 'Dyson HD 08',               price: '$34',  url: 'https://usfans.com/product/3/7719052693?ref=KRYFUS' },
-          { name: 'Dyson HD 07',               price: '$92',  url: 'https://usfans.com/product/3/7722036980?ref=KRYFUS' },
-          { name: 'Dyson HT 01',               price: '$92',  url: 'https://usfans.com/product/3/7719091943?ref=KRYFUS' },
-          { name: 'Dyson 03',                  price: '$92',  url: 'https://usfans.com/product/3/7722097826?ref=KRYFUS' },
-          { name: 'Dyson Baby Electric Clippers',price:'$110', url: 'https://usfans.com/product/3/7719013277?ref=KRYFUS' },
-          { name: 'Dyson Comb',                price: '$31',  url: 'https://usfans.com/product/3/7722054366?ref=KRYFUS' },
+          { name: 'Dyson HD 16',                price: '$120', url: 'https://usfans.com/product/3/7721989378?ref=KRYFUS' },
+          { name: 'Dyson HD 15',                price: '$118', url: 'https://usfans.com/product/3/7722044614?ref=KRYFUS' },
+          { name: 'Dyson HD 08',                price: '$34',  url: 'https://usfans.com/product/3/7719052693?ref=KRYFUS' },
+          { name: 'Dyson HD 07',                price: '$92',  url: 'https://usfans.com/product/3/7722036980?ref=KRYFUS' },
+          { name: 'Dyson HT 01',                price: '$92',  url: 'https://usfans.com/product/3/7719091943?ref=KRYFUS' },
+          { name: 'Dyson 03',                   price: '$92',  url: 'https://usfans.com/product/3/7722097826?ref=KRYFUS' },
+          { name: 'Dyson Baby Electric Clippers',price: '$110', url: 'https://usfans.com/product/3/7719013277?ref=KRYFUS' },
+          { name: 'Dyson Comb',                 price: '$31',  url: 'https://usfans.com/product/3/7722054366?ref=KRYFUS' },
         ],
       },
       {
@@ -93,24 +91,21 @@ const VENDOR_CONTENT = {
     sections: [
       {
         name: '👟 Sneakers & Designer Shoes',
-        // ── ADD YOUR SHOE SUPPLIER LINKS HERE ──
-        // To get these: open your Google Sheet → right-click each "CLICK ME" cell → Edit Link → copy the URL
         items: [
-          { name: 'Yeezys',                  price: '$15',  url: 'ADD_LINK_HERE' },
-          { name: 'Jordan 3',                price: '$31',  url: 'ADD_LINK_HERE' },
-          { name: 'Jordan 4',                price: '$100', url: 'ADD_LINK_HERE' },
-          { name: 'Air Force 1s',            price: '$38',  url: 'ADD_LINK_HERE' },
-          { name: 'Panda Dunks',             price: '$10',  url: 'ADD_LINK_HERE' },
-          { name: 'Chunky Dunky\'s',         price: '$40',  url: 'ADD_LINK_HERE' },
-          { name: 'Yeezy 350 Boost',         price: '$53',  url: 'ADD_LINK_HERE' },
-          { name: 'Balenciaga Track Runners', price: '$178', url: 'ADD_LINK_HERE' },
-          { name: 'Balenciaga Sock',         price: '$26',  url: 'ADD_LINK_HERE' },
-          { name: 'Balenciaga Fuzzy Slide',  price: '$23',  url: 'ADD_LINK_HERE' },
-          { name: 'Gucci Slides',            price: '$24',  url: 'ADD_LINK_HERE' },
-          { name: 'Bapesta',                 price: '$63',  url: 'ADD_LINK_HERE' },
-          { name: 'LV Trainer',              price: '$26',  url: 'ADD_LINK_HERE' },
-          { name: 'Lanvin Curb',             price: '$123', url: 'ADD_LINK_HERE' },
-          { name: 'Mason Mihara',            price: '$40',  url: 'ADD_LINK_HERE' },
+          { name: 'Yeezys',              price: '$15',  url: 'https://usfans.com/product/3/7718989217?ref=KRYFUS' },
+          { name: 'New Balance 9060',    price: null,   url: 'https://usfans.com/product/3/7719062003?ref=KRYFUS' },
+          { name: 'Jordan 4',            price: null,   url: 'https://usfans.com/product/3/7722016708?ref=KRYFUS' },
+          { name: 'Air Force 1s',        price: null,   url: 'https://usfans.com/product/3/7722053942?ref=KRYFUS' },
+          { name: 'Panda Dunks',         price: null,   url: 'https://usfans.com/product/3/7718969299?ref=KRYFUS' },
+          { name: 'Yeezy 350 Boost',     price: '$53',  url: 'https://www.kakobuy.com/item/details?url=https%3A%2F%2Fweidian.com%2Fitem.html%3FitemID%3D7473253975&affcode=DR88KK' },
+          { name: 'Balenciaga Track',    price: '$178', url: 'https://www.kakobuy.com/item/details?url=https%3A%2F%2Fweidian.com%2Fitem.html%3FitemID%3D7475167760&affcode=DR88KK' },
+          { name: 'Fuzzy Slides',        price: null,   url: 'https://usfans.com/product/3/7719016845?ref=KRYFUS' },
+          { name: 'Gucci Slides',        price: null,   url: 'https://usfans.com/product/3/7721998914?ref=KRYFUS' },
+          { name: 'Bapesta',             price: null,   url: 'https://usfans.com/product/3/7722028658?ref=KRYFUS' },
+          { name: 'Bapesta (alt)',        price: null,   url: 'https://usfans.com/product/3/7722052020?ref=KRYFUS' },
+          { name: 'LV Trainer',          price: null,   url: 'https://usfans.com/product/3/7721963342?ref=KRYFUS' },
+          { name: 'Lanvin Curb',         price: null,   url: 'https://usfans.com/product/3/7722001438?ref=KRYFUS' },
+          { name: 'Mason Mihara',        price: null,   url: 'https://usfans.com/product/3/7742414919?ref=KRYFUS' },
         ],
       },
     ],
@@ -121,19 +116,17 @@ const VENDOR_CONTENT = {
     intro: 'High-margin jewelry at supplier pricing. Flip for 5–10x on Depop, Instagram, and local.',
     sections: [
       {
-        name: '💎 Jewelry Supplier',
+        name: '💎 Jewelry Catalog',
         items: [
           { name: 'Full Jewelry Catalog — Browse All Products', price: null, url: 'https://jewelryresell.com' },
         ],
       },
       {
-        name: '🔗 Additional Jewelry Links',
-        // ── ADD MORE JEWELRY LINKS FROM YOUR SPREADSHEETS HERE ──
+        name: '🔗 Individual Pieces',
         items: [
-          { name: 'LV Slim Bracelet',    price: '$35', url: 'ADD_LINK_HERE' },
-          { name: 'Vancleef Bracelet',   price: '$15', url: 'ADD_LINK_HERE' },
-          { name: 'Vancleef Necklace',   price: '$9',  url: 'ADD_LINK_HERE' },
-          { name: 'Punchmade Dev Chain', price: '$58', url: 'ADD_LINK_HERE' },
+          { name: 'LV Slim Bracelet',  price: '$35', url: 'https://usfans.com/product/3/7722032868?ref=KRYFUS' },
+          { name: 'Vancleef Bracelet', price: '$15', url: 'https://usfans.com/product/3/7719088065?ref=KRYFUS' },
+          { name: 'Vancleef Necklace', price: '$9',  url: 'https://usfans.com/product/3/7719056589?ref=KRYFUS' },
         ],
       },
     ],
@@ -144,18 +137,56 @@ const VENDOR_CONTENT = {
     intro: 'Designer hoodies at supplier cost. Top-selling resell category on every platform.',
     sections: [
       {
-        name: '🧥 Hoodies & Sweatshirts',
-        // ── ADD YOUR HOODIE SUPPLIER LINKS HERE ──
+        name: '🕷 Sp5der',
         items: [
-          { name: 'Sp5der Hoodie/Joggers', price: '$42', url: 'ADD_LINK_HERE' },
-          { name: 'Chrome Hearts Hoodie',  price: '$45', url: 'ADD_LINK_HERE' },
-          { name: 'Hellstar Hoodies',      price: '$25', url: 'ADD_LINK_HERE' },
-          { name: 'Bape Hoodie',           price: '$45', url: 'ADD_LINK_HERE' },
-          { name: 'Essentials Hoodies',    price: '$30', url: 'ADD_LINK_HERE' },
-          { name: 'Denim Tier',            price: '$50', url: 'ADD_LINK_HERE' },
-          { name: 'North Face Puffer',     price: '$52', url: 'ADD_LINK_HERE' },
-          { name: 'Moncler Puffer',        price: '$50', url: 'ADD_LINK_HERE' },
-          { name: 'Trapstar',              price: '$40', url: 'ADD_LINK_HERE' },
+          { name: 'Sp5der Hoodie/Joggers', price: '$42', url: 'https://usfans.com/product/3/7722032010?ref=KRYFUS' },
+          { name: 'Sp5der Hoodie/Joggers', price: '$42', url: 'https://usfans.com/product/3/7722036950?ref=KRYFUS' },
+          { name: 'Sp5der Hoodie/Joggers', price: '$42', url: 'https://usfans.com/product/3/7722011630?ref=KRYFUS' },
+          { name: 'Sp5der Hoodie/Joggers', price: '$42', url: 'https://usfans.com/product/3/7722011614?ref=KRYFUS' },
+        ],
+      },
+      {
+        name: '🖤 Chrome Hearts & Hellstar',
+        items: [
+          { name: 'Chrome Hearts Hoodie', price: '$45', url: 'https://usfans.com/product/3/7719099133?ref=KRYFUS' },
+          { name: 'Hellstar Hoodie',      price: '$25', url: 'https://usfans.com/product/3/7722043738?ref=KRYFUS' },
+        ],
+      },
+      {
+        name: '🦇 Bape',
+        items: [
+          { name: 'Bape Hoodie', price: '$45', url: 'https://usfans.com/product/3/7719100785?ref=KRYFUS' },
+        ],
+      },
+      {
+        name: '🟤 Essentials',
+        items: [
+          { name: 'Essentials Hoodie', price: '$30', url: 'https://usfans.com/product/3/7722029390?ref=KRYFUS' },
+          { name: 'Essentials Hoodie', price: '$30', url: 'https://usfans.com/product/3/7722001566?ref=KRYFUS' },
+          { name: 'Essentials Hoodie', price: '$30', url: 'https://usfans.com/product/3/7722043734?ref=KRYFUS' },
+        ],
+      },
+      {
+        name: '👖 Denim Tears',
+        items: [
+          { name: 'Denim Tears Hoodie', price: '$50', url: 'https://usfans.com/product/3/7722013690?ref=KRYFUS' },
+          { name: 'Denim Tears Hoodie', price: '$50', url: 'https://usfans.com/product/3/7722013692?ref=KRYFUS' },
+          { name: 'Denim Tears Hoodie', price: '$50', url: 'https://usfans.com/product/3/7722013694?ref=KRYFUS' },
+        ],
+      },
+      {
+        name: '🏔 North Face',
+        items: [
+          { name: 'North Face Puffer', price: '$52', url: 'https://usfans.com/product/3/7722009206?ref=KRYFUS' },
+          { name: 'North Face Puffer', price: '$52', url: 'https://usfans.com/product/3/7722009208?ref=KRYFUS' },
+          { name: 'North Face Puffer', price: '$52', url: 'https://usfans.com/product/3/7722009210?ref=KRYFUS' },
+        ],
+      },
+      {
+        name: '🦅 Moncler & Trapstar',
+        items: [
+          { name: 'Moncler Puffer', price: '$50', url: 'https://usfans.com/product/3/7722009212?ref=KRYFUS' },
+          { name: 'Trapstar',       price: '$40', url: 'https://usfans.com/product/3/7722043736?ref=KRYFUS' },
         ],
       },
     ],
@@ -167,15 +198,15 @@ const VENDOR_CONTENT = {
     sections: [
       {
         name: '🌸 Cologne & Perfume',
-        // ── ADD YOUR FRAGRANCE SUPPLIER LINKS HERE ──
         items: [
-          { name: 'Creed Cologne',                         price: '$38', url: 'ADD_LINK_HERE' },
-          { name: 'Baccarat Rouge',                        price: '$40', url: 'ADD_LINK_HERE' },
-          { name: 'Versace Eros',                          price: '$10', url: 'ADD_LINK_HERE' },
-          { name: 'Bleu de Chanel',                        price: '$20', url: 'ADD_LINK_HERE' },
-          { name: 'Valentino',                             price: '$20', url: 'ADD_LINK_HERE' },
-          { name: '1 Million Cologne',                     price: '$10', url: 'ADD_LINK_HERE' },
-          { name: 'Jean Paul Gaultier Le Male EDP',        price: '$10', url: 'ADD_LINK_HERE' },
+          { name: 'Creed Aventus',   price: '$38', url: 'https://usfans.com/product/3/7719011247?ref=KRYFUS' },
+          { name: 'Tom Ford',        price: null,  url: 'https://usfans.com/product/3/7722009158?ref=KRYFUS' },
+          { name: 'Versace Eros',    price: '$10', url: 'https://usfans.com/product/3/7702706002?ref=KRYFUS' },
+          { name: 'Bleu de Chanel',  price: '$20', url: 'https://usfans.com/product/3/7722070086?ref=KRYFUS' },
+          { name: 'Valentino',       price: '$20', url: 'https://usfans.com/product/3/7718995399?ref=KRYFUS' },
+          { name: 'Gucci',           price: null,  url: 'https://usfans.com/product/3/7719038955?ref=KRYFUS' },
+          { name: 'Dior Perfume',    price: null,  url: 'https://usfans.com/product/3/7719109711?ref=KRYFUS' },
+          { name: 'Dior Sauvage',    price: null,  url: 'https://usfans.com/product/3/7719003323?ref=KRYFUS' },
         ],
       },
     ],
@@ -183,61 +214,98 @@ const VENDOR_CONTENT = {
 
   watches: {
     title: '⌚ Watches Vendor',
-    intro: 'Watches at supplier pricing. Smart watches flip fast on eBay, Depop, and Facebook.',
+    intro: 'Watches at supplier pricing. Flip on eBay, Depop, and Facebook Marketplace.',
     sections: [
       {
-        name: '⌚ Smart Watches',
+        name: '⌚ Casio',
         items: [
-          { name: 'Smart Watch',  price: '$7',  url: 'https://usfans.com/product/3/7722023114?ref=KRYFUS' },
-          { name: 'Smart Watch',  price: '$31', url: 'https://usfans.com/product/3/7719017201?ref=KRYFUS' },
-          { name: 'Smart Watch',  price: '$41', url: 'https://usfans.com/product/3/7719107821?ref=KRYFUS' },
+          { name: 'Casio Watch', price: '$17', url: 'https://usfans.com/product/3/7722023114?ref=KRYFUS' },
+          { name: 'Casio Watch', price: '$20', url: 'https://usfans.com/product/3/7719017201?ref=KRYFUS' },
+          { name: 'Casio Watch', price: '$22', url: 'https://usfans.com/product/3/7719107821?ref=KRYFUS' },
+          { name: 'Casio Watch', price: '$25', url: 'https://usfans.com/product/3/7722023116?ref=KRYFUS' },
+          { name: 'Casio Watch', price: '$28', url: 'https://usfans.com/product/3/7722023118?ref=KRYFUS' },
+          { name: 'Casio Watch', price: '$35', url: 'https://usfans.com/product/3/7722023120?ref=KRYFUS' },
+          { name: 'Casio Watch', price: '$44', url: 'https://usfans.com/product/3/7722023122?ref=KRYFUS' },
         ],
       },
       {
-        name: '🕰 Luxury Watches',
-        // ── ADD YOUR LUXURY WATCH SUPPLIER LINKS HERE ──
+        name: '🕐 Tissot',
         items: [
-          { name: 'Rolex', price: '$75', url: 'ADD_LINK_HERE' },
-        ],
-      },
-    ],
-  },
-
-  clothing: {
-    title: '👕 Clothing Vendor',
-    intro: 'Streetwear and designer clothing at supplier pricing. Consistent sellers every season.',
-    sections: [
-      {
-        name: '👕 T-Shirts & Tops',
-        // ── ADD YOUR CLOTHING SUPPLIER LINKS HERE ──
-        items: [
-          { name: 'Chrome Hearts T-Shirt', price: '$21', url: 'ADD_LINK_HERE' },
-          { name: 'Hellstar T-Shirt',      price: '$35', url: 'ADD_LINK_HERE' },
-          { name: 'Bape T-Shirt',          price: '$40', url: 'ADD_LINK_HERE' },
-          { name: 'Essentials T-Shirts',   price: '$35', url: 'ADD_LINK_HERE' },
-          { name: 'Alo',                   price: '$80', url: 'ADD_LINK_HERE' },
+          { name: 'Tissot PRX',          price: null, url: 'https://usfans.com/product/3/7719017203?ref=KRYFUS' },
+          { name: 'Tissot PRX II',       price: null, url: 'https://usfans.com/product/3/7719017205?ref=KRYFUS' },
+          { name: 'Tissot PRX 40',       price: null, url: 'https://usfans.com/product/3/7719017207?ref=KRYFUS' },
+          { name: 'Tissot PRX Powermatic',price: null, url: 'https://usfans.com/product/3/7719017209?ref=KRYFUS' },
+          { name: 'Tissot T-Race',       price: null, url: 'https://usfans.com/product/3/7719017211?ref=KRYFUS' },
+          { name: 'Tissot Le Locle',     price: null, url: 'https://usfans.com/product/3/7719017213?ref=KRYFUS' },
+          { name: 'Tissot Seastar',      price: null, url: 'https://usfans.com/product/3/7719017215?ref=KRYFUS' },
+          { name: 'Tissot Gentleman',    price: null, url: 'https://usfans.com/product/3/7719017217?ref=KRYFUS' },
         ],
       },
       {
-        name: '👖 Pants & Bottoms',
+        name: '👑 Rolex',
         items: [
-          { name: 'EE Shorts',              price: '$20', url: 'ADD_LINK_HERE' },
-          { name: 'Purple Jeans',           price: '$60', url: 'ADD_LINK_HERE' },
-          { name: 'Amiri Jeans',            price: '$50', url: 'ADD_LINK_HERE' },
-          { name: 'Gallery Dept. Sweatpants',price: '$40', url: 'ADD_LINK_HERE' },
-          { name: 'Nike Tech Fleece',       price: '$55', url: 'ADD_LINK_HERE' },
+          { name: 'Rolex Daytona',       price: '$75', url: 'https://usfans.com/product/3/7719107823?ref=KRYFUS' },
+          { name: 'Rolex Daytona (alt)', price: '$75', url: 'https://usfans.com/product/3/7719107825?ref=KRYFUS' },
+          { name: 'Rolex Daytona (alt)', price: '$75', url: 'https://usfans.com/product/3/7719107827?ref=KRYFUS' },
+          { name: 'Rolex GMT-Master II', price: '$75', url: 'https://usfans.com/product/3/7719107829?ref=KRYFUS' },
+          { name: 'Rolex GMT-Master II (alt)', price: '$75', url: 'https://usfans.com/product/3/7719107831?ref=KRYFUS' },
+          { name: 'Rolex Datejust',      price: '$75', url: 'https://usfans.com/product/3/7719107833?ref=KRYFUS' },
+          { name: 'Rolex Datejust (alt)',price: '$75', url: 'https://usfans.com/product/3/7719107835?ref=KRYFUS' },
+          { name: 'Rolex Datejust (alt)',price: '$75', url: 'https://usfans.com/product/3/7719107837?ref=KRYFUS' },
+          { name: 'Rolex Submariner',    price: '$75', url: 'https://usfans.com/product/3/7719107839?ref=KRYFUS' },
+          { name: 'Rolex Explorer II',   price: '$75', url: 'https://usfans.com/product/3/7719107841?ref=KRYFUS' },
+          { name: 'Rolex Deepsea',       price: '$75', url: 'https://usfans.com/product/3/7719107843?ref=KRYFUS' },
         ],
       },
       {
-        name: '🎒 Bags & Accessories',
+        name: '🌊 Omega',
         items: [
-          { name: 'LV Messenger Bag',   price: '$21',  url: 'ADD_LINK_HERE' },
-          { name: 'LV Backpack',        price: '$131', url: 'ADD_LINK_HERE' },
-          { name: 'LV Backpack (alt)',   price: '$105', url: 'ADD_LINK_HERE' },
-          { name: 'Supreme Backpack',   price: '$26',  url: 'ADD_LINK_HERE' },
-          { name: 'Goyard Wallet',      price: '$14',  url: 'ADD_LINK_HERE' },
-          { name: 'Bottega Veneta',     price: '$108', url: 'ADD_LINK_HERE' },
-          { name: 'Prada Sunglasses',   price: '$10',  url: 'ADD_LINK_HERE' },
+          { name: 'Omega Seamaster',      price: null, url: 'https://usfans.com/product/3/7719017219?ref=KRYFUS' },
+          { name: 'Omega Speedmaster',    price: null, url: 'https://usfans.com/product/3/7719017221?ref=KRYFUS' },
+          { name: 'Omega Constellation',  price: null, url: 'https://usfans.com/product/3/7719017223?ref=KRYFUS' },
+          { name: 'Omega De Ville',       price: null, url: 'https://usfans.com/product/3/7719017225?ref=KRYFUS' },
+          { name: 'Omega Planet Ocean',   price: null, url: 'https://usfans.com/product/3/7719017227?ref=KRYFUS' },
+          { name: 'Omega Aqua Terra 150M',price: null, url: 'https://usfans.com/product/3/7719017229?ref=KRYFUS' },
+        ],
+      },
+      {
+        name: '⚓ Longines',
+        items: [
+          { name: 'Longines Conquest',         price: null, url: 'https://usfans.com/product/3/7719017231?ref=KRYFUS' },
+          { name: 'Longines HydroConquest',    price: null, url: 'https://usfans.com/product/3/7719017233?ref=KRYFUS' },
+          { name: 'Longines HydroConquest (alt)',price: null, url: 'https://usfans.com/product/3/7719017235?ref=KRYFUS' },
+          { name: 'Longines Master Collection', price: null, url: 'https://usfans.com/product/3/7719017237?ref=KRYFUS' },
+        ],
+      },
+      {
+        name: '💎 Audemars Piguet',
+        items: [
+          { name: 'AP Royal Oak',        price: null, url: 'https://usfans.com/product/3/7719017239?ref=KRYFUS' },
+          { name: 'AP Royal Oak (alt)',   price: null, url: 'https://usfans.com/product/3/7719017241?ref=KRYFUS' },
+          { name: 'AP Royal Oak Offshore',price: null, url: 'https://usfans.com/product/3/7719017243?ref=KRYFUS' },
+          { name: 'AP Millenary',        price: null, url: 'https://usfans.com/product/3/7719017245?ref=KRYFUS' },
+        ],
+      },
+      {
+        name: '🏆 Patek Philippe',
+        items: [
+          { name: 'Patek Philippe Nautilus',     price: null, url: 'https://usfans.com/product/3/7719017247?ref=KRYFUS' },
+          { name: 'Patek Philippe Aquanaut',     price: null, url: 'https://usfans.com/product/3/7719017249?ref=KRYFUS' },
+          { name: 'Patek Philippe Calatrava',    price: null, url: 'https://usfans.com/product/3/7719017251?ref=KRYFUS' },
+        ],
+      },
+      {
+        name: '🔱 Vacheron Constantin',
+        items: [
+          { name: 'Vacheron Overseas',    price: null, url: 'https://usfans.com/product/3/7719017253?ref=KRYFUS' },
+          { name: 'Vacheron Patrimony',   price: null, url: 'https://usfans.com/product/3/7719017255?ref=KRYFUS' },
+        ],
+      },
+      {
+        name: '✈️ IWC',
+        items: [
+          { name: 'IWC Pilot',       price: null, url: 'https://usfans.com/product/3/7719017257?ref=KRYFUS' },
+          { name: 'IWC Portugieser', price: null, url: 'https://usfans.com/product/3/7719017259?ref=KRYFUS' },
         ],
       },
     ],
@@ -250,7 +318,7 @@ const VENDOR_CONTENT = {
 // Build bundle content from all vendors
 VENDOR_CONTENT.bundle = {
   title: '🔥 All Access Bundle',
-  intro: 'You have access to every vendor. All 7 categories below.',
+  intro: 'You have access to every vendor. All 6 categories below.',
   sections: Object.entries(VENDOR_CONTENT)
     .filter(([key, val]) => key !== 'bundle' && val)
     .flatMap(([, vendor]) =>

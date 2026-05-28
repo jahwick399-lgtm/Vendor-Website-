@@ -25,7 +25,10 @@ function VendorCard({ vendor, index }) {
       const { url } = await createCheckoutSession(vendor.id)
       window.location.href = url
     } catch (err) {
-      setError(err.message)
+      const msg = err.message?.includes('fetch')
+        ? 'Server starting up — wait 30 seconds and try again.'
+        : err.message
+      setError(msg)
       setLoading(false)
     }
   }
@@ -219,7 +222,10 @@ function AllAccessBanner({ vendor }) {
       const { url } = await createCheckoutSession(vendor.id)
       window.location.href = url
     } catch (err) {
-      setError(err.message)
+      const msg = err.message?.includes('fetch')
+        ? 'Server starting up — wait 30 seconds and try again.'
+        : err.message
+      setError(msg)
       setLoading(false)
     }
   }
@@ -233,7 +239,7 @@ function AllAccessBanner({ vendor }) {
       <div className="relative grid md:grid-cols-2 gap-8 items-center">
         <div>
           <div className="inline-flex items-center gap-2 badge-hot bg-gradient-to-r from-purple-500 to-pink-500 text-white px-4 py-1.5 rounded-full text-xs font-orbitron mb-4">
-            🔥 BEST VALUE — SAVE $31
+            🔥 BEST VALUE — SAVE $30.94
           </div>
           <div className="text-5xl mb-4" style={{ filter: 'drop-shadow(0 0 30px rgba(147,51,234,0.6))' }}>
             {vendor.emoji}
@@ -248,7 +254,7 @@ function AllAccessBanner({ vendor }) {
             </span>
             <div>
               <span className="text-white/30 font-space text-lg line-through block">{vendor.originalPrice}</span>
-              <span className="text-green-400 font-space text-sm">You save $31</span>
+              <span className="text-green-400 font-space text-sm">You save $22.95</span>
             </div>
           </div>
         </div>
@@ -275,10 +281,10 @@ function AllAccessBanner({ vendor }) {
             whileHover={{ scale: loading ? 1 : 1.02 }}
             whileTap={{ scale: loading ? 1 : 0.98 }}
           >
-            {loading ? 'Redirecting...' : '🔥 Get All Access — $24.99'}
+            {loading ? 'Redirecting...' : '🔥 Get All Access — $24.99 (6 Vendors)'}
           </motion.button>
           <p className="text-center text-white/20 font-space text-xs mt-3">
-            🔒 Secure checkout · Instant access to all 7 vendors
+            🔒 Secure checkout · Instant access to all 6 vendors
           </p>
         </div>
       </div>
