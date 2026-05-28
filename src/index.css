@@ -1,0 +1,163 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background-color: #05050a;
+    color: #ffffff;
+    font-family: 'Space Grotesk', system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+    min-height: 100vh;
+  }
+
+  #root { min-height: 100vh; }
+
+  ::-webkit-scrollbar { width: 4px; }
+  ::-webkit-scrollbar-track { background: #05050a; }
+  ::-webkit-scrollbar-thumb { background: #7e22ce; border-radius: 2px; }
+  ::-webkit-scrollbar-thumb:hover { background: #9333ea; }
+}
+
+@layer utilities {
+  /* Purple glow utilities */
+  .glow-purple {
+    box-shadow: 0 0 20px rgba(147,51,234,0.5), 0 0 60px rgba(147,51,234,0.2);
+  }
+  .glow-purple-sm {
+    box-shadow: 0 0 12px rgba(147,51,234,0.4);
+  }
+  .text-glow-purple {
+    text-shadow: 0 0 20px rgba(168,85,247,0.8), 0 0 40px rgba(168,85,247,0.4);
+  }
+
+  /* Glass card */
+  .glass-card {
+    background: linear-gradient(135deg, rgba(147,51,234,0.08) 0%, rgba(10,5,20,0.9) 100%);
+    border: 1px solid rgba(147,51,234,0.2);
+    backdrop-filter: blur(20px);
+  }
+  .glass-card:hover {
+    border-color: rgba(147,51,234,0.5);
+    box-shadow: 0 0 40px rgba(147,51,234,0.2), 0 20px 60px rgba(0,0,0,0.5);
+  }
+
+  /* Purple button */
+  .btn-purple {
+    background: linear-gradient(135deg, #9333ea, #7e22ce);
+    color: #fff;
+    font-weight: 700;
+    font-family: 'Space Grotesk', sans-serif;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    border: 1px solid rgba(168,85,247,0.4);
+  }
+  .btn-purple:hover {
+    background: linear-gradient(135deg, #a855f7, #9333ea);
+    box-shadow: 0 0 30px rgba(147,51,234,0.6), 0 0 60px rgba(147,51,234,0.3);
+    transform: translateY(-2px);
+  }
+  .btn-purple:active { transform: translateY(0); }
+
+  /* Outline purple button */
+  .btn-outline-purple {
+    background: transparent;
+    border: 1px solid rgba(147,51,234,0.5);
+    color: #a855f7;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    cursor: pointer;
+  }
+  .btn-outline-purple:hover {
+    background: rgba(147,51,234,0.1);
+    border-color: #9333ea;
+    box-shadow: 0 0 20px rgba(147,51,234,0.3);
+  }
+
+  /* Hero gradient background */
+  .hero-bg {
+    background: radial-gradient(ellipse 80% 60% at 50% -10%, rgba(147,51,234,0.25) 0%, transparent 60%),
+                radial-gradient(ellipse 50% 40% at 80% 50%, rgba(126,34,206,0.1) 0%, transparent 50%),
+                #05050a;
+  }
+
+  /* Floating particle dots */
+  .particle {
+    position: absolute;
+    border-radius: 50%;
+    background: rgba(147,51,234,0.6);
+    animation: floatParticle linear infinite;
+    pointer-events: none;
+  }
+
+  @keyframes floatParticle {
+    0% { transform: translateY(100vh) scale(0); opacity: 0; }
+    10% { opacity: 1; }
+    90% { opacity: 0.5; }
+    100% { transform: translateY(-20px) scale(1); opacity: 0; }
+  }
+
+  /* Ticker strip */
+  .ticker-track {
+    display: flex;
+    white-space: nowrap;
+    animation: ticker 35s linear infinite;
+  }
+
+  @keyframes ticker {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+
+  /* Review scroll */
+  .reviews-track {
+    display: flex;
+    gap: 1rem;
+    animation: scrollReviews 50s linear infinite;
+  }
+  .reviews-track:hover { animation-play-state: paused; }
+
+  @keyframes scrollReviews {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+
+  /* Pulse CTA */
+  @keyframes ctaPulse {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(147,51,234,0.7); }
+    50% { box-shadow: 0 0 0 12px rgba(147,51,234,0); }
+  }
+  .cta-pulse { animation: ctaPulse 2s ease-in-out infinite; }
+
+  /* Badge */
+  .badge-hot {
+    background: linear-gradient(135deg, #9333ea, #ec4899);
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  /* Gradient text */
+  .gradient-text {
+    background: linear-gradient(135deg, #a855f7, #ec4899);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .gradient-text-purple {
+    background: linear-gradient(135deg, #c084fc, #a855f7);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* Section divider */
+  .section-divider {
+    background: linear-gradient(to right, transparent, rgba(147,51,234,0.4), transparent);
+    height: 1px;
+  }
+}
