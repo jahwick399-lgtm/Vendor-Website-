@@ -25,21 +25,23 @@ export default function Footer() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, ease: EASE }}
-            className="flex items-center gap-3"
+            className="flex items-center gap-2"
           >
-            <div
-              className="w-9 h-9 rounded-xl flex items-center justify-center"
-              style={{
-                background: 'linear-gradient(135deg, #9333ea, #6d28d9)',
-                border: '1px solid rgba(168,85,247,0.4)',
-                boxShadow: '0 0 18px rgba(147,51,234,0.4)',
-              }}
-            >
-              <span className="text-white font-black text-sm font-orbitron">J</span>
-            </div>
-            <div>
-              <span className="font-orbitron font-black text-lg text-white">Jay's</span>
-              <span className="font-orbitron font-black text-lg gradient-text-purple"> Vendors</span>
+            <img
+              src="/logo.png"
+              alt="FlipLabs Vendors"
+              className="h-10 object-contain"
+              onError={e => { e.target.style.display = 'none'; e.target.nextSibling.style.display = 'flex' }}
+            />
+            <div className="hidden items-center gap-2">
+              <div className="w-9 h-9 rounded-xl flex items-center justify-center"
+                style={{ background: 'linear-gradient(135deg, #9333ea, #6d28d9)', border: '1px solid rgba(168,85,247,0.4)', boxShadow: '0 0 18px rgba(147,51,234,0.4)' }}>
+                <span className="text-white font-black text-sm font-orbitron">F</span>
+              </div>
+              <div>
+                <span className="font-orbitron font-black text-lg text-white">FlipLabs</span>
+                <span className="font-orbitron font-black text-lg gradient-text-purple"> Vendors</span>
+              </div>
             </div>
           </motion.div>
 
@@ -71,7 +73,7 @@ export default function Footer() {
             transition={{ duration: 0.6, delay: 0.2, ease: EASE }}
             className="text-white/22 font-space text-sm"
           >
-            © 2025 Jay's Vendors.
+            © 2025 FlipLabs Vendors.
           </motion.p>
         </div>
 

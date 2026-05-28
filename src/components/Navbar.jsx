@@ -39,20 +39,22 @@ export default function Navbar() {
       >
         <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
           {/* Logo */}
-          <a href="#" className="flex items-center gap-3 group">
-            <div
-              className="w-9 h-9 rounded-xl flex items-center justify-center transition-all duration-300 group-hover:scale-105"
-              style={{
-                background: 'linear-gradient(135deg, #9333ea, #6d28d9)',
-                border: '1px solid rgba(168,85,247,0.4)',
-                boxShadow: '0 0 16px rgba(147,51,234,0.45), inset 0 1px 0 rgba(255,255,255,0.1)',
-              }}
-            >
-              <span className="text-white font-black text-sm font-orbitron">J</span>
-            </div>
-            <div>
-              <span className="font-orbitron font-black text-lg text-white">Jay's</span>
-              <span className="font-orbitron font-black text-lg gradient-text-purple"> Vendors</span>
+          <a href="#" className="flex items-center gap-2 group">
+            <img
+              src="/logo.png"
+              alt="FlipLabs Vendors"
+              className="h-10 object-contain transition-all duration-300 group-hover:scale-105"
+              onError={e => { e.target.style.display = 'none'; e.target.nextSibling.style.display = 'flex' }}
+            />
+            <div className="hidden items-center gap-2">
+              <div className="w-9 h-9 rounded-xl flex items-center justify-center"
+                style={{ background: 'linear-gradient(135deg, #9333ea, #6d28d9)', border: '1px solid rgba(168,85,247,0.4)', boxShadow: '0 0 16px rgba(147,51,234,0.45)' }}>
+                <span className="text-white font-black text-sm font-orbitron">F</span>
+              </div>
+              <div>
+                <span className="font-orbitron font-black text-lg text-white">FlipLabs</span>
+                <span className="font-orbitron font-black text-lg gradient-text-purple"> Vendors</span>
+              </div>
             </div>
           </a>
 
