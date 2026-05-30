@@ -70,51 +70,51 @@ function VendorCard({ vendor, index }) {
       />
 
       {/* Header gradient */}
-      <div className={`relative bg-gradient-to-br ${vendor.gradient} p-7 flex flex-col items-center`}>
+      <div className={`relative bg-gradient-to-br ${vendor.gradient} p-4 sm:p-7 flex flex-col items-center`}>
         {/* Badge */}
         {vendor.tag && (
-          <div className={`absolute top-4 right-4 badge-hot bg-gradient-to-r ${vendor.tagColor} text-white px-3 py-1 rounded-full text-[9px] font-orbitron tracking-wider shadow-lg`}>
+          <div className={`absolute top-3 right-3 badge-hot bg-gradient-to-r ${vendor.tagColor} text-white px-2 py-0.5 rounded-full text-[8px] sm:text-[9px] font-orbitron tracking-wider shadow-lg`}>
             {vendor.tag}
           </div>
         )}
 
         {/* Emoji icon */}
         <div
-          className="text-5xl mb-4 animate-float-up"
+          className="text-3xl sm:text-5xl mb-2 sm:mb-4 animate-float-up"
           style={{ filter: `drop-shadow(0 0 24px ${vendor.glowColor})` }}
         >
           {vendor.emoji}
         </div>
 
         {/* Category */}
-        <span className="font-space text-[9px] tracking-[0.25em] uppercase text-purple-300/50 mb-1">
+        <span className="font-space text-[8px] sm:text-[9px] tracking-[0.2em] uppercase text-purple-300/50 mb-0.5">
           {vendor.category}
         </span>
 
         {/* Name */}
-        <h3 className="font-orbitron font-black text-lg text-white text-center leading-tight">
+        <h3 className="font-orbitron font-black text-sm sm:text-lg text-white text-center leading-tight">
           {vendor.name}
         </h3>
       </div>
 
       {/* Card body */}
-      <div className="relative p-5 flex flex-col flex-1">
+      <div className="relative p-3 sm:p-5 flex flex-col flex-1">
         {/* Price row */}
-        <div className="flex items-baseline gap-2.5 mb-3">
-          <span className="font-orbitron font-black text-4xl gradient-text-purple text-glow-sm">
+        <div className="flex items-baseline gap-1.5 sm:gap-2.5 mb-2 sm:mb-3">
+          <span className="font-orbitron font-black text-2xl sm:text-4xl gradient-text-purple text-glow-sm">
             {vendor.price}
           </span>
-          <span className="text-white/25 font-space text-sm line-through">{vendor.originalPrice}</span>
+          <span className="text-white/25 font-space text-xs sm:text-sm line-through">{vendor.originalPrice}</span>
         </div>
 
         {/* Desc */}
-        <p className="text-white/40 font-space text-xs leading-relaxed mb-4">{vendor.desc}</p>
+        <p className="text-white/40 font-space text-[10px] sm:text-xs leading-relaxed mb-2 sm:mb-4 hidden sm:block">{vendor.desc}</p>
 
         {/* Divider */}
-        <div className="section-divider mb-4" />
+        <div className="section-divider mb-2 sm:mb-4" />
 
-        {/* Features */}
-        <ul className="space-y-2 flex-1 mb-5">
+        {/* Features — hidden on mobile to keep cards compact */}
+        <ul className="space-y-2 flex-1 mb-3 sm:mb-5 hidden sm:block">
           {vendor.items.map(item => (
             <li key={item} className="flex items-start gap-2 text-white/55 font-space text-xs">
               <CheckIcon />
@@ -125,14 +125,14 @@ function VendorCard({ vendor, index }) {
 
         {/* Error */}
         {error && (
-          <p className="text-red-400 text-xs font-space mb-3 text-center">{error}</p>
+          <p className="text-red-400 text-[10px] font-space mb-2 text-center">{error}</p>
         )}
 
         {/* CTA */}
         <motion.button
           onClick={handleBuy}
           disabled={loading}
-          className="relative w-full py-3.5 rounded-xl font-bold font-space tracking-widest text-sm uppercase overflow-hidden disabled:opacity-60 disabled:cursor-not-allowed btn-purple"
+          className="relative w-full py-2.5 sm:py-3.5 rounded-xl font-bold font-space tracking-widest text-xs sm:text-sm uppercase overflow-hidden disabled:opacity-60 disabled:cursor-not-allowed btn-purple"
           whileHover={{ scale: loading ? 1 : 1.03 }}
           whileTap={{ scale: loading ? 1 : 0.96 }}
           transition={{ type: 'spring', stiffness: 350, damping: 28 }}
@@ -140,7 +140,7 @@ function VendorCard({ vendor, index }) {
           {loading ? (
             <span className="flex items-center justify-center gap-2">
               <motion.span
-                className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full"
+                className="w-3 h-3 sm:w-4 sm:h-4 border-2 border-white/30 border-t-white rounded-full"
                 animate={{ rotate: 360 }}
                 transition={{ duration: 0.65, repeat: Infinity, ease: 'linear' }}
               />
@@ -152,8 +152,8 @@ function VendorCard({ vendor, index }) {
         </motion.button>
 
         {/* Trust note */}
-        <p className="text-center text-white/18 font-space text-[10px] mt-2.5 tracking-wide">
-          🔒 Secure checkout · Instant delivery
+        <p className="text-center text-white/18 font-space text-[9px] sm:text-[10px] mt-2 tracking-wide">
+          🔒 Secure · Instant
         </p>
       </div>
     </motion.div>
@@ -195,7 +195,7 @@ export default function VendorGrid() {
         </motion.div>
 
         {/* Regular grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 mb-5">
+        <div className="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 sm:gap-4 mb-5">
           {regular.map((v, i) => (
             <VendorCard key={v.id} vendor={v} index={i} />
           ))}

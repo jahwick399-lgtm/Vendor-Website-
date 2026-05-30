@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
+import logoImg from '../Public/Purple Logo.png'
 
 const EASE = [0.16, 1, 0.3, 1]
 
@@ -41,10 +42,9 @@ export default function Navbar() {
           {/* Logo */}
           <a href="#" className="flex items-center gap-2 group">
             <img
-              src="/logo.png"
+              src={logoImg}
               alt="FlipLabs Vendors"
               className="h-10 object-contain transition-all duration-300 group-hover:scale-105"
-              onError={e => { e.target.style.display = 'none'; e.target.nextSibling.style.display = 'flex' }}
             />
             <div className="hidden items-center gap-2">
               <div className="w-9 h-9 rounded-xl flex items-center justify-center"
