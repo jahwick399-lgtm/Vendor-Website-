@@ -71,9 +71,9 @@ function VendorCard({ vendor, index }) {
 
       {/* Header gradient */}
       <div className={`relative bg-gradient-to-br ${vendor.gradient} p-4 sm:p-7 flex flex-col items-center`}>
-        {/* Badge */}
+        {/* Badge — hidden on mobile to avoid emoji overlap */}
         {vendor.tag && (
-          <div className={`absolute top-3 right-3 badge-hot bg-gradient-to-r ${vendor.tagColor} text-white px-2 py-0.5 rounded-full text-[8px] sm:text-[9px] font-orbitron tracking-wider shadow-lg`}>
+          <div className={`hidden sm:block absolute top-4 right-4 badge-hot bg-gradient-to-r ${vendor.tagColor} text-white px-3 py-1 rounded-full text-[9px] font-orbitron tracking-wider shadow-lg`}>
             {vendor.tag}
           </div>
         )}
